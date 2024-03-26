@@ -1,13 +1,18 @@
 
-const url = "https://api.potterdb.com/v1/characters";
+const url = "https://api.potterdb.com/v1/movies";
 const btn = document.querySelector(".search");
 
 btn.addEventListener("click",()=>{
     console.log("works",Date());
     // getData1();
     // getData2();
-    getData3();
+    // getData3();
+    callMovie();
 })
+async function callMovie(){
+    let ans = await axios.get(url);
+    console.log(ans.data.data);
+}
 
 async function getData1(){
     let answer = await fetch(url);
