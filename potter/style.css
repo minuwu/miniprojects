@@ -1,13 +1,30 @@
-h1{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-.search{
-    color: wheat;
-    background-color: green;
-    width: 100%;
-    font-size: 2rem;
-    text-align: center;
+*{
+    margin: 0;
+    padding: 0;
 }
 .container{
-    background-color: whitesmoke;
+    display: flex;
+    width: 100%;
+    background-color: aqua;
+}
+.mainPanel{
+    background-color: aquamarine;
+    height: 100vh;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.mainPanel h1{
+    font-family: "Hi Melody", sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    font-style: bold;    
+    margin: .5rem;  
+    padding: .5rem;
+    color: whitesmoke;
+}
+.sidePanel{
+    
 }
