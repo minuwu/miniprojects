@@ -15,16 +15,68 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
+    position: sticky;
+    left: 0;
+    top: 0;;
 }
 .mainPanel h1{
     font-family: "Hi Melody", sans-serif;
+    font-family: 'Harry Potter', sans-serif;
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 500;
     font-style: bold;    
     margin: .5rem;  
     padding: .5rem;
     color: whitesmoke;
 }
 .sidePanel{
-    
+    width: 100%;
+    background-color: #121212;
+}
+.sidePanel .search{
+    width: 100%;
+}
+.movieList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: bisque; */
+}
+.movie{
+    font-family: 'Harry Potter', sans-serif;
+    margin:  .3rem;
+    padding: .3rem;
+    width: 95%;
+    border-radius: .6rem;
+    background-color: #191919;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    transition:  all .5s ease-out allow-discrete;
+}
+.movie:hover{
+    box-shadow: 2px 2px 4px white;
+}
+.title{
+    text-align: center;
+    color: aliceblue;
+    font-size: 2rem;
+    font-weight: 300;
+    width: 100%;
+    margin: .5rem;
+}
+.budget{
+    text-align: center;
+    color: yellow;
+    width: 50%;
+    font-size: 1rem;
+}
+.boxOffice{
+    text-align: center;
+    color: green;
+    width: 50%;
+    font-size: 1rem;
 }
