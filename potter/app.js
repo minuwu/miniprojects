@@ -1,6 +1,8 @@
 
 const url = "https://api.potterdb.com/v1/movies";
 const btn = document.querySelector(".search");
+const movieList = document.querySelector(".movieList");
+
 
 btn.addEventListener("click",()=>{
     console.log("works",Date());
@@ -9,11 +11,36 @@ btn.addEventListener("click",()=>{
     // getData3();
     callMovie();
 })
+
 async function callMovie(){
     let ans = await axios.get(url);
     console.log(ans.data.data);
+    populate(ans.data.data);
 }
 
+function populate(datas){
+    for(data of datas){
+        let title = document.createElement("div");
+        title.innerText = data.attributes.title;
+        title.classList.add("title");
+
+        let movie = document.createElement("div");
+        movie.classList.add("movie");
+        movie.appendChild(title);
+
+        let budget = document.createElement("div");
+        budget.classList.add("budget");
+        budget.innerText = `Budget: ${data.attributes["budget"]}`;
+        movie.appendChild(budget);
+
+        let boxOffice = document.createElement("div");
+        boxOffice.classList.add("boxOffice");
+        boxOffice.innerText = `Box Office Collection: ${data.attributes["box_office"]}`;
+        movie.appendChild(boxOffice);
+
+        movieList.appendChild(movie);
+    }
+}
 async function getData1(){
     let answer = await fetch(url);
     console.log(answer);
