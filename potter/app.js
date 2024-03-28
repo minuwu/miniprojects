@@ -2,9 +2,13 @@
 const url = "https://api.potterdb.com/v1/movies";
 const btn = document.querySelector(".search");
 const movieList = document.querySelector(".movieList");
+const quoteBox = document.querySelector(".quoteBox");
 
 
 btn.addEventListener("click",()=>{
+    btn.disabled  = true;
+    btn.display = "hidden";
+    btn.backgroundColor = "black";
     console.log("works",Date());
     // getData1();
     // getData2();
@@ -38,9 +42,29 @@ function populate(datas){
         boxOffice.innerText = `Box Office Collection: ${data.attributes["box_office"]}`;
         movie.appendChild(boxOffice);
 
+        movie.addEventListener("click",async ()=>{
+            let detail = await axios.get(`${url}/${data.id}`)
+            console.log(detail);
+            let joke = await axios.get("https://api.portkey.uk/quote");
+            // console.table(joke);
+            console.log(joke.data.quote, joke.data.speaker, joke.data.story);
+            quoteBox.innerHTML = `${joke.data.quote} <br><i>${joke.data.speaker}</i><br> ${joke.data.story}`;
+        })
+
         movieList.appendChild(movie);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 async function getData1(){
     let answer = await fetch(url);
     console.log(answer);
