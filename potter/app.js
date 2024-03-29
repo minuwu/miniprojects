@@ -2,9 +2,20 @@
 const url = "https://api.potterdb.com/v1/movies";
 const btn = document.querySelector(".search");
 const movieList = document.querySelector(".movieList");
+const quoteBox = document.querySelector(".quoteBox");
+const back = document.querySelector(".mainPanel");
 
 
 btn.addEventListener("click",()=>{
+    btn.disabled  = true;
+    btn.classList.toggle("search");
+    btn.classList.toggle("vanish");
+    setTimeout(()=>{
+        btn.classList.add("none");
+    },4000);
+
+    // btn.display = "hidden";
+    // btn.backgroundColor = "black";
     console.log("works",Date());
     // getData1();
     // getData2();
@@ -37,10 +48,44 @@ function populate(datas){
         boxOffice.classList.add("boxOffice");
         boxOffice.innerText = `Box Office Collection: ${data.attributes["box_office"]}`;
         movie.appendChild(boxOffice);
+        // console.log(data.id);
+        let ket= data.id;
+        
+        movie.addEventListener("click",() =>{
+            console.log(ket);
+            showMovie(ket);
+        });
 
         movieList.appendChild(movie);
     }
 }
+async function showMovie(data){
+    let detail = await axios.get(`${url}/${data}`);
+    let dd = detail.data.data.attributes;
+    console.log(dd);
+    quoteBox.innerHTML = `<img src="${dd.poster}">`;
+    quoteBox.innerHTML += `<br>Title: ${dd.title}<br><span class="summary">Summary: ${dd.summary}<span><br>Release Date:${dd.release_date} || Rating: ${dd.rating}`;
+
+    // quoteBox.innerHTML= `<img src=${dd.poster}>`;
+    // back.style.background = `url(${dd.poster})`;
+    // back.style.backgroundClip = "inherit";
+    // back.style.backgroundSize = `cover`;
+}
+async function showJoke (){
+    let joke = await axios.get("https://api.portkey.uk/quote");
+    // console.table(joke);
+    console.log(joke.data.quote, joke.data.speaker, joke.data.story);
+    quoteBox.innerHTML = `<p>${joke.data.quote} <br><i>${joke.data.speaker}</i><br> ${joke.data.story}<p>`;
+}
+
+showJoke();
+
+
+
+
+
+
+
 async function getData1(){
     let answer = await fetch(url);
     console.log(answer);

@@ -4,13 +4,15 @@
 }
 .container{
     display: flex;
-    width: 100%;
-    background-color: aqua;
+    /* flex-direction: column; */
+    /* width: 100%; */
+    background-color: #0e1a40;
+    padding: 1.5rem;
 }
 .mainPanel{
-    background-color: aquamarine;
+    background-color : #0e1a40;
     height: 100vh;
-    width: 40%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -23,19 +25,86 @@
 .mainPanel h1{
     font-family: "Hi Melody", sans-serif;
     font-family: 'Harry Potter', sans-serif;
-    font-size: 3rem;
+    font-size: 3.7rem;
     font-weight: 500;
     font-style: bold;    
-    margin: .5rem;  
-    padding: .5rem;
-    color: whitesmoke;
+    margin: 1rem;  
+    padding: 1rem;
+    margin-top: 2rem;
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
+    color: #ecb939;
+}
+.mainPanel h1 img{
+    height: 5rem;
+    width: 5rem;
+}
+.mainPanel .search{
+    font-family: 'Amour Stories', sans-serif;
+    font-family: 'Harry Potter', sans-serif;
+    font-size: 2rem;
+    color: #f0c75e;
+    background-color: #2b4291;
+    height: 3rem;
+    width: 75%;
+    border-radius: 1rem;
+    transition:  all .5s ease-in-out;
+}
+.mainPanel .search:hover{
+    /* display: none; */
+    box-shadow: 2px 2px 4px #d3a625;
+}
+.vanish{
+    font-family: 'Amour Stories', sans-serif;
+    font-family: 'Harry Potter', sans-serif;
+    font-size: 2rem;
+    color: #0e1a40;
+    background-color: #0e1a40;
+    height: 3rem;
+    width: 75%;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: none;
+    transition:  color 2s ease-out;
+    transition:  background-color 2s ease-out;
+    /* transition:  display 5s ease-out; */
+}
+.none{
+    /* display: none; */
+    visibility: hidden;
+}
+.mainPanel .quoteBox{
+    height: 70%;
+    font-family: 'Amour Stories', sans-serif;
+    font-size: 1.6rem;
+    color: #f0c75e;
+    padding: 1rem;
+    margin: 1rem;
+    padding-top: 0rem;
+    margin-top: 0rem;
+    text-align: center;
+    text-wrap: pretty;
+    /* overflow-wrap: break-all;
+    hyphens: manual; */
+}
+.mainPanel .quoteBox p{
+    margin-top: 3rem;
+}
+.mainPanel .quoteBox img{
+    margin-top: -3rem;
+    height: 20rem;
+    width: 20rem;
+}
+.mainPanel .quoteBox .summary{
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: normal;
 }
 .sidePanel{
     width: 100%;
-    background-color: #121212;
-}
-.sidePanel .search{
-    width: 100%;
+    background-color : #2a623d;
+    background-color : #0e1a40;
+    /* background-color : #7851A9; */
 }
 .movieList{
     display: flex;
@@ -48,8 +117,9 @@
     margin:  .3rem;
     padding: .3rem;
     width: 95%;
-    border-radius: .6rem;
-    background-color: #191919;
+    border-radius: 0 0 .6rem;
+    background-color: #1a472a;
+    background-color : #4e198e;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -58,25 +128,53 @@
     transition:  all .5s ease-out allow-discrete;
 }
 .movie:hover{
-    box-shadow: 2px 2px 4px white;
+    box-shadow: 2px 2px 6px goldenrod;
 }
 .title{
     text-align: center;
-    color: aliceblue;
+    color: #eeba30;
     font-size: 2rem;
     font-weight: 300;
     width: 100%;
     margin: .5rem;
 }
 .budget{
+    font-family: 'Amour Stories', sans-serif;
     text-align: center;
-    color: yellow;
+    color: #d3a625;
     width: 50%;
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 .boxOffice{
+    font-family: 'Amour Stories', sans-serif;
     text-align: center;
-    color: green;
+    color: #d3a625;
     width: 50%;
-    font-size: 1rem;
+    font-size: 1.3rem;
+}
+
+
+@media (max-width: 768px){
+    .body{    
+        /* height: 100vh; */
+        background-color: #0e1a40;
+    }
+    .container{
+        flex-direction: column;
+        /* height: 100%; */
+        max-width: 100vh;
+        min-height: 100vh;
+    }
+    .mainPanel{
+        width: 100%;
+        height: max-content;
+        position: relative;
+    }
+    .mainPanel .search{
+        box-shadow: 2px 2px 4px #d3a625;
+    }
+    .movie{
+        box-shadow: 2px 2px 6px goldenrod;
+    }
+
 }
