@@ -5,6 +5,14 @@ const movieList = document.querySelector(".movieList");
 const quoteBox = document.querySelector(".quoteBox");
 const back = document.querySelector(".mainPanel");
 
+const scrollWindow = function () {  
+    if (window.scrollY != 0) {
+      setTimeout(function () {
+        window.scrollTo(0, window.scrollY - 50);
+        scrollWindow();
+      }, 10);
+    }
+  };
 
 btn.addEventListener("click",()=>{
     btn.disabled  = true;
@@ -54,6 +62,7 @@ function populate(datas){
         movie.addEventListener("click",() =>{
             console.log(ket);
             showMovie(ket);
+            scrollWindow();
         });
 
         movieList.appendChild(movie);
