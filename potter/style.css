@@ -170,6 +170,9 @@
         height: max-content;
         position: relative;
     }
+    .mainPanel h1{
+        font-size: 3rem;
+    }
     .mainPanel .search{
         box-shadow: 2px 2px 4px #d3a625;
     }
