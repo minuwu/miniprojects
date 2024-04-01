@@ -1,6 +1,21 @@
-import app from "express";
+import express from "express";
 const app = express();
 const port = 3000;
+
+app.get("/",(req,res)=>{
+    console.log("visited root ", new Date);
+    res.send("request recieved");
+})
+app.get("/search/:name/:id", (req,res)=>{
+    let {name, id} = req.params;
+    console.log(req.params);
+    res.send(`Hello ${name} your ID is: ${id}`);
+})
+app.get("/search",(req,res)=>{
+    console.log(req.query);
+    let obj = req.query;
+    res.send(`Query for ${obj}`);
+})
 app.listen(port,(err)=>{
     if(err){
         console.log("something went wrong...");
