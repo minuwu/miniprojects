@@ -16,6 +16,10 @@ app.get("/search",(req,res)=>{
     let obj = req.query;
     res.send(`Query for ${obj}`);
 })
+app.get("*", (req,req)=>{
+    console.log("wildcard entry");
+    res.send("visit a valid route");
+})
 app.listen(port,(err)=>{
     if(err){
         console.log("something went wrong...");
