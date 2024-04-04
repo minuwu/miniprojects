@@ -2,7 +2,13 @@ import express from "express";
 const app = express();
 const port = 3000;
 
+import * as data from "./data.js";
+console.dir(data);
+
 app.set("view engine", "ejs");
+app.get("/", (req,res)=>{
+    res.render("home");
+})
 
 app.get("/",(req,res)=>{
     console.log("visited root ", new Date);
@@ -18,7 +24,7 @@ app.get("/search",(req,res)=>{
     let obj = req.query;
     res.send(`Query for ${obj}`);
 })
-app.get("*", (req,req)=>{
+app.get("/*", (req,res)=>{
     console.log("wildcard entry");
     res.send("visit a valid route");
 })
