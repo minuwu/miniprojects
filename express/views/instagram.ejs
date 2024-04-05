@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insta</title>
+</head>
+<body>
+    <h1> Drinks </h1>
+    <% drinks %><hr>
+    <%- drinks %><hr>
+    <%% drinks %><hr>
+    
+    <% for(drink of drinks) { %>
+        <h2> <%= drink.strDrink %> </h2>
+        <h4> <%= drink.strCategory %> </h4>
+        <hr>
+    <% } %>
+</body>
+</html>
