@@ -7,6 +7,8 @@ import * as data from "./data.js";
 import { error } from "console";
 // console.dir(data);
 
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 import path from 'path';
 import { fileURLToPath } from 'url';
