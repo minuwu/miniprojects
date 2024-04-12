@@ -4,4 +4,4 @@
 
 
 
-## [EIDI](https://minuwu.github.io/miniprojects/eidi/)
+## [EIDI](https://minuwu.github.io/miniprojects/eidi/index.html)
