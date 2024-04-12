@@ -1,5 +1,7 @@
-# miniprojects
-## [Compilation of mini projects](https://minuwu.github.io/miniprojects/)
+# [mini projects](https://minuwu.github.io/miniprojects/)
 
-# Harry Potter Movies
-### [visit](https://minuwu.github.io/miniprojects/potter/)
+## [Harry Potter Movies](https://minuwu.github.io/miniprojects/potter/)
+
+
+
+## [EIDI](https://minuwu.github.io/miniprojects/eidi/)

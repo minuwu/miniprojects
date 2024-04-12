@@ -1,0 +1,6 @@
+GET http://localhost:3000/
+###
+GET http://localhost:3000/search/Minhaz/404
+
+###
+GET http://localhost:3000/search?q=Alohamora

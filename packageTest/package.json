@@ -1,0 +1,17 @@
+{
+  "name": "packagetest",
+  "version": "1.0.0",
+  "description": "figlet test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "figlet": "^1.7.0",
+    "give-me-a-joke": "^0.5.1",
+    "random-words": "^2.0.1"
+  }
+}
