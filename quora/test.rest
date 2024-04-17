@@ -1,0 +1,7 @@
+GET http://localhost:3000/posts/new
+
+###
+GET http://localhost:3000/posts
+
+###
+GET http://localhost:3000/e7ea6a18-9c2a-4f95-bbb7-6630076a6406
