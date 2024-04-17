@@ -32,8 +32,6 @@ let posts = [
     }
 ];
 
-
-
 app.get("/posts",(req,res)=>{
     res.render("posts.ejs",{ posts });
 });
@@ -46,7 +44,6 @@ app.get("/posts/new",(req,res)=>{
 app.get("/posts/:id",(req,res)=>{
     let { id }  = req.params;
     let post = posts.find((post)=>{return post.id==id});
-    // res.send(`${post.postContent}`);
     res.render("post.ejs", {post});
 })
 
