@@ -8,6 +8,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({    extended: true  }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 
 let posts = [
     {
@@ -41,10 +42,30 @@ app.get("/posts/new",(req,res)=>{
     res.render("new.ejs");
 })
 
+app.get("/posts/:id/edit", (req,res)=>{
+    let { id }  = req.params;
+    let post = posts.find((post)=>{return post.id==id});
+    res.render("edit.ejs",{post});
+})
+
 app.get("/posts/:id",(req,res)=>{
     let { id }  = req.params;
     let post = posts.find((post)=>{return post.id==id});
     res.render("post.ejs", {post});
+})
+
+app.patch("/posts/:id",(req,res)=>{
+    let {id} = req.params;
+    let post = posts.find((post)=>{return post.id==id});
+    post.postContent = req.body.postContent;
+    console.log(post.postContent);
+    res.redirect("/posts");
+})
+
+app.get("/posts/:id/delete",(req,res)=>{
+    let {id} = req.params;
+    posts = posts.filter((post)=>{return post.id!=id});
+    res.redirect("/posts");
 })
 
 app.post("/posts",(req,res)=>{

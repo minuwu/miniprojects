@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Quora</h1>
-    <button><a href="posts/new">Create a New Post</a></button>
+    <button><a href="/posts/new">Create a New Post</a></button>
     <% for(post of posts){ %>
         <hr>
         <div class="post">
@@ -16,7 +16,9 @@
             <br>
             <%=post.postContent%>
             <br>
-            <a href="posts/<%=post.id%>">View Post</a>
+            <button>
+                <a href="/posts/<%=post.id%>">View Post</a>
+            </button>
         </div>
         
     <% } %>
