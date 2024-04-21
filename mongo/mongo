@@ -1,0 +1,60 @@
+# run as admin : mongosh (mongo shell)
+
+# commands:
+
+db
+show dbs
+use newDB
+show collections
+
+db.newCollection.insertOne(
+    {
+        name: "Alexander",
+        age: 33,
+        email: "alex@gmail.com",
+        password: "mongodb"
+    }
+)
+
+db.newCollection.insertMany(
+    [
+        {
+            name: "Boby",
+            age: 31
+        },
+        {
+            name: "Casendral",
+            age: 28
+        },
+        {
+            name: "Dylanex",
+            age: 33
+        },
+        {
+            name: "Elon Mask",
+            age: 68,
+            companies: {
+                parent: "paypal",
+                children: "hyperloop" 
+            }
+        }
+    ]
+)
+
+db.newCollection.find()                                                  //returns cursor or pointer to documnent
+db.newCollection.findOne( {name:"Casendra"} )                            //returns document
+db.newCollection.find( {age: { $gt :30 }} )                              //greter than 30
+db.newCollection.find( {age: { $in :[ 30, 31 ] }} )                      //age 30 or 31
+db.newCollection.find( {$or: [{age: {$gt: 30 }}, {name: "Dylan"}]} );    //age >30 or Name=Dylan
+db.newCollection.find( {"companies:parent" : "paypal"})
+
+
+db.newCollection.updateOne(filter, update, options)
+db.newCollection.updateOne( {name:"Dylan"}, {$set:{age: 50}})
+db.newCollection.replaceOne() //replaces whole document
+
+
+db.newCollection.deleteOne(<filter>,<options>)
+db.newCollection.deleteMany({ name:"Dylan" })
+db.newCollection.deleteMany( {} ) //empty condition truncates collection
+db.dropDatabase()
