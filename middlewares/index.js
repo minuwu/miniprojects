@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 8080;
+const ExpressError = require("./expressError.js");
 
 //custom middle ware 
 app.use((req,res,next)=>{
@@ -26,8 +27,9 @@ app.use("/api",(req,res,next)=>{
     if(token === "giveaccess"){
         next();
     }else{
-        res.send("access denied");
+        // res.send("access denied");
         // throw new Error("access denied");
+        throw new ExpressError(401,"Access Denied"); //uses custom error class
     }
 })
 app.get("/api",(req,res)=>{
@@ -69,6 +71,7 @@ app.use((err, req, res, next)=>{
 });
 app.use((err, req, res, next)=>{
     console.log("Error Handler 2");
+    res.send(err); //will send the custom error error instead of default express error
     next(err); //passes to default err handler
 });
 //end of block
