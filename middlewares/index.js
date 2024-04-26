@@ -55,6 +55,9 @@ app.get("/",(req,res)=>{
 app.get("/random",(req,res)=>{
     res.send("This is random");
 })
+app.get("/admin", (req,res)=>{
+    throw new ExpressError(403,"Access is Forbidden");
+})
 //custom middle ware 
 app.use((req,res)=>{
     console.log("4th middleware");
@@ -71,8 +74,10 @@ app.use((err, req, res, next)=>{
 });
 app.use((err, req, res, next)=>{
     console.log("Error Handler 2");
-    res.send(err); //will send the custom error error instead of default express error
-    next(err); //passes to default err handler
+    res.send(err); //will send the custom error instead of default express error
+    let {status = 500, message = "some error occured"} = err; //if expressError was not defined
+    res.status(status).send(message);
+    next(err); //passes to default err handler as there's no next custom error handler
 });
 //end of block
 
