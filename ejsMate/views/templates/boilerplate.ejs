@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <%- block('head').toString() %>
+      <title>I'm the layout</title>
+  </head>
+  <body>
+    <section>
+      <%-body -%>
+    </section>
+    <%- block('footer').toString() %>
+  </body>
+</html>
