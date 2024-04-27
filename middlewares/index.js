@@ -80,6 +80,20 @@ app.use((err, req, res, next)=>{
     next(err); //passes to default err handler as there's no next custom error handler
 });
 //end of block
+function wrapAsync(fn){
+    return function(req, res, next){
+        fn(req, res, next).catch(err=>next(err));
+    };
+};
+
+app.get("/listings",wrapAsync(async(req,res)=>{
+    try{
+        let listings = Listings.find();
+        res.render("index.ejs", {listings});
+    }catch(err){
+        console.log(err.name);
+    }
+}));
 
 app.listen(PORT,(req,res)=>{
     console.log("Express: Listening on port: ",PORT);
