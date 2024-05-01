@@ -24,6 +24,30 @@ const customerSchema = new Schema({
     }
   ]
 });
+
+//middleware for fun4 
+// there's is mongoose middleware for findByIdAndDelete, but this uses findOneAndDelete as middleware
+// so we setup a middleware for findOneAndDelete to process cascading deletion
+customerSchema.pre("findOneAndDelete",async (data)=>{
+  console.log("Pre-middleware****************");
+  console.log(data);
+  // next();
+})
+customerSchema.post("findOneAndDelete", async(customer)=>{
+  if(customer){
+    if(customer.orders){
+      console.log(customer.orders)
+      if(customer.orders.length){
+        let result = await Order.deleteMany({ _id: {$in: customer.orders }});
+        console.log("Post-middleware****************");
+        console.log(result);
+        // next();
+      }
+    }
+  }
+  // next();
+})
+//middle must be defined before compiling models
 const Customer = mongoose.model("Customer", customerSchema);
 
 const orderData = [
@@ -41,9 +65,13 @@ const orderData = [
   }
 ];
 
+
+
+
 const fun1 = async ()=>{
+  await Order.deleteMany({});
   let result = await Order.insertMany(orderData);
-  console.log("*******************");
+  console.log("fun1*******************");
   console.log(result);
     
   // fun2();
@@ -52,6 +80,7 @@ const fun1 = async ()=>{
 
 
 const fun2 = async ()=> {
+  await Customer.deleteMany({});
   const order1 = await Order.findOne({ "name": "Samosa" });
   const order2 = await Order.findOne({ "name": "Chocolate" });
   const customer1 = new Customer({
@@ -64,13 +93,34 @@ const fun2 = async ()=> {
   // customer1.orders.push(order1);
   // customer1.orders.push(order2);
   let result = await customer1.save();
-  console.log("*******************");
+  console.log("fun2*******************");
   console.log(result);
 };
 
+const fun3 = async () => {
+  const result  = await Customer.findOne().populate("orders");
+  console.log("fun3*******************");
+  console.log(result);
+}
+
+const fun4 = async () =>{
+  // const result = await Customer.findByIdAndDelete("663257ae512bece2fcf8ac68");
+  const result = await Customer.findOneAndDelete();
+  console.log("fun4*******************");
+  console.log(result);
+}
+
+
+
 (async ()=>{
-  await fun1();
-  await fun2();
+  await fun1();         //creates order
+  await fun2();         //creates customer
+  await fun3();         //shows customer with detailed orders
+  await fun4();         //deletes customer - triggers cascading deletion - mongoose middleware deletes orders
+  await fun3();         //shows customer with detailed orders
+  let result = await Order.find();
+  console.log("############");
+  console.log(result);
 })()
 
 // fun1();
