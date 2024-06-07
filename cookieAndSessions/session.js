@@ -23,16 +23,25 @@ app.use("*", (req, res, next)=>{
     next()
     // res.send("server working...");
 })
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("successMsg");
+    res.locals.error = req.flash("errorMsg");
+    next();
+})
 
 app.get("/register", (req, res)=>{
-    let { name = "anonoymous" } = req.query;
+    let { name = "anonymous" } = req.query;
     req.session.name = name;
-    req.flash("msg","user registered successfullly");
+    if(name=="anonymous"){
+        req.flash("errorMsg","User couldn't be registered");
+    }else{
+        req.flash("successMsg","User registerd successfully");
+    }
     res.redirect("/welcome");
 })
 app.get("/welcome", (req, res)=>{
     // console.log(req.flash("msg"));
-    res.render("welcome.ejs",{name: req.session.name, msg: req.flash("msg")});
+    res.render("welcome.ejs",{name: req.session.name});
     res.send(`Hello ${req.session.name}`);
 })
 
