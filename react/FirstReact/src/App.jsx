@@ -1,10 +1,14 @@
-function Title(){
-  return <h1> This is a title component </h1>;
-}
+import './App.css';
+import Message from './msgbox.jsx';
 
 function App() {
   return (
-   <Title/>
+    <>
+      <Message name="Minhaz" color="red"/>
+      <Message name="Ul" color="green"/>
+      <Message name="Abedin" color="blue"/>
+      <Message name="NOcolo" />;
+    </>
   );
 }
 
