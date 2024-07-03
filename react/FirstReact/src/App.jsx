@@ -2,7 +2,7 @@ import './App.css';
 
 // import Like from './like.jsx';
 // function App(){
-//   return <Like/>;
+//   return <Like/>
 // }
 
 // import Message from './msgbox.jsx';
