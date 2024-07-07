@@ -11,16 +11,27 @@ export default function LudoBox(){
     //changes, no changes are detected as addresses remains the same
 
     function moveBlue (){
-        return setMoves({...moves,blue: moves.blue+1});
+        return setMoves((previousMove)=>{
+            return {...previousMove,blue: previousMove.blue+1};
+        });
     }
     function moveRed (){
-        return setMoves({...moves,red: moves.red+1});
+        // return setMoves({...moves,red: moves.red+1});
+        return setMoves((previousMove)=>{
+            return {...previousMove,red: previousMove.red+1};
+        });
     }
     function moveYellow (){
-        return setMoves({...moves,yellow: moves.yellow+1});
+        // return setMoves({...moves,yellow: moves.yellow+1});
+        return setMoves((previousMove)=>{
+            return {...previousMove,yellow: previousMove.yellow+1};
+        });
     }
     function moveGreen (){
-        return setMoves({...moves,green: moves.green+1});
+        // return setMoves({...moves,green: moves.green+1});
+        return setMoves((previousMove)=>{
+            return {...previousMove,green: previousMove.green+1};
+        });
     }
 
     return (
