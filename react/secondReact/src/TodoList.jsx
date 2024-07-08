@@ -1,8 +1,9 @@
 import { useState } from "react"
 import {v4 as uuidv4} from "uuid";
+import './TodoList.css'
 
 export function TodoList (){
-    let [todos, setTodos] = useState([{task:"new task", key: uuidv4()}]);
+    let [todos, setTodos] = useState([{task:"new task", key: uuidv4(), isDone: false}]);
     let [newTodo, setNewTodo] = useState("");
     let updateNewTodo = (event) => {
         // console.log(event.target.value);
@@ -10,9 +11,44 @@ export function TodoList (){
     }
     let addTodo = () => {
         setTodos((previousTodos)=>{
-            return [...previousTodos, {task:newTodo, key: uuidv4()}];
+            return [...previousTodos, {task:newTodo, key: uuidv4(), isDone: false}];
         })
         setNewTodo("");
+    }
+    let deleteTodo = (id) => {
+        setTodos((todos)=>{
+            return todos.filter((todo)=>{
+                return todo.key != id;
+            })
+        })
+    }
+    let changeStatus =(key) =>{
+        setTodos((todos)=>{
+            return todos.map((todo)=>{
+                if(todo.key==key){
+                    if(todo.isDone==false){
+                        todo.isDone=true;
+                    }else{
+                        todo.isDone=false;
+                    }
+                    return todo;
+                }else{
+                    return todo;
+                }
+            })
+        })
+    }
+    let updateTodo = (key) =>{
+        setTodos((todos)=>{
+            return todos.map((todo)=>{
+                if(todo.key==key){
+                    todo.task = todo.task.toUpperCase();
+                    return todo;
+                }else{
+                    return todo;
+                }
+            })
+        })
     }
     return (
         <>
@@ -28,7 +64,19 @@ export function TodoList (){
             <ul>
                 {
                     todos.map((todo)=>{
-                     return <li key={todo.key}>{todo.task}</li>
+                     return (
+                        <li key={todo.key} className="todoItem">
+                            <span className="todoTask"> 
+                                <button style={{marginRight:".8em"}} onClick={()=>changeStatus(todo.key)}>{todo.isDone?<i class="fa-solid fa-circle-check"></i>:<i class="fa-solid fa-circle-xmark"></i>}</button>
+                            
+                                {todo.task} 
+                            </span>
+                            <span className="todoBtns">
+                            <button onClick={()=>deleteTodo(todo.key)}><i class="fa-solid fa-trash"></i></button>
+                            <button onClick={()=>updateTodo(todo.key)}><i class="fa-solid fa-font"></i></button>
+                            </span>
+                        </li>
+                     )
                     })
                 }
             </ul>

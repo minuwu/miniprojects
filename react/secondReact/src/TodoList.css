@@ -1,0 +1,13 @@
+h1{
+    min-width: 10em;
+}
+.todoItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.todoTask{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
