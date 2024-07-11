@@ -67,13 +67,13 @@ export function TodoList (){
                      return (
                         <li key={todo.key} className="todoItem">
                             <span className="todoTask"> 
-                                <button style={{marginRight:".8em"}} onClick={()=>changeStatus(todo.key)}>{todo.isDone?<i class="fa-solid fa-circle-check"></i>:<i class="fa-solid fa-circle-xmark"></i>}</button>
+                                <button className="btn" style={{marginRight:".8em"}} onClick={()=>changeStatus(todo.key)}>{todo.isDone?<i class="fa-solid fa-circle-check"></i>:<i class="fa-solid fa-circle-xmark"></i>}</button>
                             
                                 {todo.task} 
                             </span>
                             <span className="todoBtns">
-                            <button onClick={()=>deleteTodo(todo.key)}><i class="fa-solid fa-trash"></i></button>
-                            <button onClick={()=>updateTodo(todo.key)}><i class="fa-solid fa-font"></i></button>
+                            <button className="btn" onClick={()=>deleteTodo(todo.key)}><i class="fa-solid fa-trash"></i></button>
+                            <button className="btn" onClick={()=>updateTodo(todo.key)}><i class="fa-solid fa-font"></i></button>
                             </span>
                         </li>
                      )

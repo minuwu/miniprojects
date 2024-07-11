@@ -1,5 +1,17 @@
 h1{
-    min-width: 10em;
+   font-size:  clamp(
+        4em, 2.5vw, 10em
+    ) !important;
+}
+ul{
+    padding-left: 0 !important;
+}
+input{
+    font-size: 1.8em;
+    max-width: 97%;
+}
+.btn{
+    border-radius: 45% !important;
 }
 .todoItem{
     display: flex;
