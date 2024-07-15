@@ -1,0 +1,8 @@
+span{
+    font-size: larger;
+    border: 5px solid whitesmoke;
+    color: black;
+    background-color: whitesmoke;
+    margin: .5rem;
+    border-radius: .2rem;
+} 
