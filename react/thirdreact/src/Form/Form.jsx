@@ -17,15 +17,17 @@ export default function Form (){
         console.log(formData);
         setFormData(formTemplate);
     }
-    
+
     return (<form onSubmit={handleSubmit}>
         <label htmlFor="fullName">fullName</label>
         <input type="text" name="fullName" id="fullName" value={formData.fullName} onChange={handleForm} />
-
+        <hr/>
         <label htmlFor="userName">userName</label>
         <input type="text"  name="userName"  id="userName" value={formData.userName}  onChange={handleForm}  />
-
+        <hr/>
         <label htmlFor="password">password</label>
         <input type="password"  name="password" id="password"  value={formData.password} onChange={handleForm}  />
+        <hr/>
+        <button>Submit</button>
     </form>)
 }
