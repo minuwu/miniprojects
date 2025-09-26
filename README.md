@@ -1,7 +1,7 @@
-# [mini projects](https://minuwu.github.io/miniprojects/potter/)
+<!-- # [mini projects](https://minuwu.github.io/miniprojects/potter/) -->
 <!-- # [mini projects](https://minuwu.github.io/miniprojects/) -->
 
-## [Harry Potter Movies](https://minuwu.github.io/miniprojects/potter/)
+# [Harry Potter Movies](https://minuwu.github.io/miniprojects/potter/)
 <!-- ### Short Description
 
 This project was initially created to practice API testing but evolved into a themed web application. It features custom fonts and UI elements designed to capture the spooky vibe of the Harry Potter movies, demonstrating a UI that strongly reflects its context.
@@ -27,4 +27,4 @@ The Harry Potter Movies project was originally developed as a hands-on exercise 
 
 </div>
 
-## [EIDI (deprecated)](https://minuwu.github.io/miniprojects/eidi/index.html)
+<!-- ## [EIDI (deprecated)](https://minuwu.github.io/miniprojects/eidi/index.html) -->
